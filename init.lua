@@ -1,4 +1,3 @@
-require('plugins')
 
 local colorscheme = 'rose-pine-moon'
 local ok, _ = pcall(vim.cmd, 'colorscheme ' .. colorscheme)
@@ -22,14 +21,17 @@ vim.opt.splitbelow = true
 vim.opt.ignorecase = true
 
 vim.g.mapleader = ","
-vim.keymap.set({"n", "i"}, "<Up>", "<Nop>")
-vim.keymap.set({"n", "i"}, "<Down>", "<Nop>")
-vim.keymap.set({"n", "i"}, "<Right>", "<Nop>")
-vim.keymap.set({"n", "i"}, "<Left>", "<Nop>")
 
--- Set XenRT sequence and include files to xml for color
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-  pattern = {"*.seq", "*.inc"},
-  command = "setf xml",
-})
-
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+require("lazy").setup("plugins")
