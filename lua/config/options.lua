@@ -18,3 +18,9 @@ vim.opt.ignorecase = true
 vim.g.mapleader = ","
 
 vim.opt.scrolloff = 8
+
+-- Set XenRT sequence and include files to xml for color
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = {"*.seq", "*.inc"},
+  command = "setf xml",
+})
