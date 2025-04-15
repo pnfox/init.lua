@@ -6,3 +6,7 @@ vim.keymap.set("t", "<C-/>", "<cmd>close<CR>")
 
 -- controversial?
 vim.keymap.set("i", "<C-c>", "<Esc>")
+
+-- Open terminal and explore
+vim.keymap.set("n", "<leader>t", ":term<CR>")
+vim.keymap.set("n", "<leader>e", ":Ex<CR>")
