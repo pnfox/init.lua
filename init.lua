@@ -1,7 +1,3 @@
-
-local colorscheme = 'rose-pine-moon'
-local ok, _ = pcall(vim.cmd, 'colorscheme ' .. colorscheme)
-
 require('config.options')
 require('config.keymaps')
 
@@ -22,3 +18,6 @@ require("lazy").setup({
     { import = "plugins" },
   }
 })
+
+local colorscheme = 'tokyonight-night'
+local ok, _ = pcall(vim.cmd, 'colorscheme ' .. colorscheme)

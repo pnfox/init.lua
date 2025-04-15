@@ -26,7 +26,6 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
-		'pylsp'
             },
             handlers = {
                 function(server_name) -- default handler (optional)
