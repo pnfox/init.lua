@@ -25,8 +25,7 @@ return {
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
-            ensure_installed = {
-            },
+            ensure_installed = {},
             handlers = {
                 function(server_name) -- default handler (optional)
 
@@ -50,6 +49,19 @@ return {
                 end,
             }
         })
+
+        require("lspconfig").gopls.setup {
+            cmd = { "gopls" },
+            settings = {
+                gopls = {
+                    usePlaceholders = true,
+                    analyses = {
+                        unusedparams = true,
+                    },
+                },
+            },
+        }
+
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
